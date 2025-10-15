@@ -1,16 +1,17 @@
 import "react-native-reanimated";
 
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import PostListScreen from "./screens/PostListScreen";
-import PostDetailScreen from "./screens/PostDetailScreen";
+import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import CoursesTabs from './screens/CoursesTabs';
+import ProfileDrawerScreen from './screens/ProfileDrawerScreen';
 
-export type RootStackParamList = {
-  PostList: undefined;
-  PostDetail: { postId: string; title: string; content: string };
-};
+const Drawer = createDrawerNavigator();
 
 export default function RootLayout() {
-  const Stack = createNativeStackNavigator<RootStackParamList>();
-
-  return <>{/* Your code here for the stack navigator */}</>;
+  return (
+    <Drawer.Navigator initialRouteName="Courses">
+      <Drawer.Screen name="Courses" component={CoursesTabs} />
+      <Drawer.Screen name="My Profile" component={ProfileDrawerScreen} />
+    </Drawer.Navigator>
+  );
 }
