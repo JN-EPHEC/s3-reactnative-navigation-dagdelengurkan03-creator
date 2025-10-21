@@ -1,9 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text } from 'react-native';
 import HomeScreen from './HomeScreen';
 import ProfileScreen from './ProfileScreen';
 import SettingsScreen from './SettingsScreen';
+import Colors from '../constants/Colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,8 +21,11 @@ export default function TabsNavigator() {
           };
           return <Text style={{ fontSize: 18 }}>{icons[route.name] ?? '•'}</Text>;
         },
-        tabBarActiveTintColor: '#2f95dc',
-        tabBarInactiveTintColor: '#8e8e93',
+        tabBarActiveTintColor: Colors.primary,
+        tabBarInactiveTintColor: Colors.muted,
+        headerStyle: { backgroundColor: Colors.primary },
+        headerTintColor: Colors.card,
+        tabBarStyle: { backgroundColor: Colors.card, borderTopColor: Colors.border },
         headerShown: false,
       })}
     >

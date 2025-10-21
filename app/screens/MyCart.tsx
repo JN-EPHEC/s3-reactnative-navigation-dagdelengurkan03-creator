@@ -1,12 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import Colors from '../constants/Colors';
 
 export default function MyCart() {
   return (
     <View style={styles.container}>
-      <Text>Your Shopping Cart is empty.</Text>
+      <Text style={styles.text}>Your Shopping Cart is empty.</Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({ container: { flex: 1, alignItems: 'center', justifyContent: 'center' } });
+const styles = StyleSheet.create({ container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: Colors.background }, text: { color: Colors.muted } });

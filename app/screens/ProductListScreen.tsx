@@ -1,5 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet } from 'react-native';
+import Colors from '../constants/Colors';
+
 const PRODUCTS = [
   { id: 'p1', name: 'Laptop', description: 'A powerful laptop for work and play.' },
   { id: 'p2', name: 'Mouse', description: 'A smooth wireless mouse.' },
@@ -16,14 +18,7 @@ export default function ProductListScreen({ navigation }: any) {
         renderItem={({ item }) => (
           <Pressable
             style={({ pressed }) => [styles.item, pressed && styles.itemPressed]}
-            onPress={() =>
-              // navigate to ProductDetail within the same stack
-              navigation.navigate('PostDetail', {
-                postId: item.id,
-                title: item.name,
-                content: item.description,
-              })
-            }
+            onPress={() => navigation.navigate('ProductDetail', { title: item.name, content: item.description })}
           >
             <Text style={styles.name}>{item.name}</Text>
           </Pressable>
@@ -34,14 +29,16 @@ export default function ProductListScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, backgroundColor: Colors.background },
   list: { padding: 16 },
   item: {
     padding: 12,
     marginBottom: 12,
     borderRadius: 8,
-    backgroundColor: 'rgba(0,0,0,0.03)'
+    backgroundColor: Colors.card,
+    borderColor: Colors.border,
+    borderWidth: 1,
   },
   itemPressed: { opacity: 0.7 },
-  name: { fontSize: 16 }
+  name: { fontSize: 16, color: Colors.text }
 });
